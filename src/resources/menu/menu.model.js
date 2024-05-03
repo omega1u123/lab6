@@ -2,10 +2,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 class Menu {
    constructor({
-    string: id,
-    string: title,
-    string: photo,
-    boolean: isPublish,
+    id,
+    title,
+    photo,
+    isPublish,
   } = {}) {
     this.id = id;
     this.title = title;

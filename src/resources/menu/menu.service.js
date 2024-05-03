@@ -1,4 +1,4 @@
-import * as menuRepo from './menu.memory.repository.js';
+import * as menuRepo from './menu.memory.repo.js';
 
 const getAll = () => menuRepo.getAll();
 

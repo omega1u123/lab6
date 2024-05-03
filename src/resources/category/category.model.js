@@ -1,11 +1,11 @@
 
 class Category {
     constructor({
-     string: id,
-     string: title,
-     string: photo,
-     boolean: isVisible,
-     string: menuId,
+     id,
+     title,
+     photo,
+     isVisible,
+     menuId,
    } = {}) {
      this.id = id;
      this.title = title;
@@ -20,4 +20,4 @@ class Category {
    }
  }
  
- export default Menu;
+ export default Category;
