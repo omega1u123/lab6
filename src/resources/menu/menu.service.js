@@ -1,5 +1,5 @@
-import * as usersRepo from './menu.memory.repository.js';
+import * as menuRepo from './menu.memory.repository.js';
 
-const getAll = () => usersRepo.getAll();
+const getAll = () => menuRepo.getAll();
 
 export { getAll };
