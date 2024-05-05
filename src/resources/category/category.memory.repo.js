@@ -42,4 +42,4 @@ const updateById = async (id, updatedCategory) => {
   return false; 
 };
 
-export { getAll, getById, deleteById, create, updateById, getByMenuId, deleteByMenuId };
+module.exports = { getAll, getById, deleteById, create, updateById, getByMenuId, deleteByMenuId };

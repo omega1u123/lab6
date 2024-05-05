@@ -20,4 +20,4 @@ class Category {
    }
  }
  
- export default Category;
+ module.export = Category;

@@ -1,6 +1,5 @@
-import express from 'express';
-
-import userRouter from './resources/users/user.router.js';
+const express = require('express');
+const menuRouter =  require('./resources/menu/menu.router.js');
 
 const app = express();
 
@@ -14,6 +13,6 @@ app.use('/', (req, res, next) => {
   next();
 });
 
-app.use('/users', userRouter);
+app.use('/menu', menuRouter);
 
-export default app;
+module.exports = app;

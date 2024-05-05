@@ -1,9 +1,10 @@
-const menuData = require('../../data/menu.data')
+const menuData = require('../../data/menu.data');
 
 const getAll = async () => menuData;
   
 const create = async (menu) => {
   menuData.push(menu);
+  console.log(menuData)
   return menu;
 }
 
@@ -29,4 +30,4 @@ const updateById = async (id, updatedMenu) => {
   return false; 
 };
 
-export { getAll, getById, deleteById, create, updateById };
+module.exports = { getAll, getById, deleteById, create, updateById };

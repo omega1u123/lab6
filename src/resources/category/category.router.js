@@ -1,9 +1,7 @@
-import { Router } from 'express';
+const router = require('express').Router({ mergeParams: true });
 
-import Category from './category.model.js';
-import * as categoryService from './category.service.js';
-
-const router = Router();
+const Category = require('./category.model.js');
+const categoryService = require('./category.service.js');
 
 router.route('/').get(async (req, res) => {
   const category = await categoryService.getAll();
@@ -11,4 +9,4 @@ router.route('/').get(async (req, res) => {
   res.json(category.map(Category.toResponse));
 });
 
-export default router;
+module.export = router;

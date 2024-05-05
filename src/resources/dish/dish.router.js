@@ -1,9 +1,7 @@
-import { Router } from 'express';
+const router = require('express').Router({ mergeParams: true });
+const Dish = require('./dish.model.js');
+const dishService = require('./dish.service.js');
 
-import Dish from './dish.model.js';
-import * as dishService from './dish.service.js';
-
-const router = Router();
 
 router.route('/').get(async (req, res) => {
   const dish = await dishService.getAll();
@@ -11,4 +9,4 @@ router.route('/').get(async (req, res) => {
   res.json(dish.map(Dish.toResponse));
 });
 
-export default router;
+module.export = router;

@@ -1,6 +1,6 @@
-import * as menuRepo from './menu.memory.repo.js';
-import * as categoryRepo from '../category/category.memory.repo.js';
-import Menu from './menu.model.js';
+const menuRepo =  require('./menu.memory.repo.js');
+const categoryRepo =  require('../category/category.memory.repo.js');
+const Menu = require('../menu/menu.model.js')
 
 const getAll = () => menuRepo.getAll();
 
@@ -36,4 +36,4 @@ const getCategories = (menuId) =>{
     return categoryRepo.getByMenuId(menuId);
 }
 
-export { getAll, getById, deleteById, create, updateById, getCategories };
+module.exports =  { getAll, getById, deleteById, create, updateById, getCategories };

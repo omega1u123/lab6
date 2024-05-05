@@ -1,5 +1,5 @@
-import * as dishRepo from './dish.memory.repo.js';
+const dishRepo = require('./dish.memory.repo.js');
 
 const getAll = () => dishRepo.getAll();
 
-export { getAll };
+module.export =  { getAll };
