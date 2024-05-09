@@ -9,6 +9,7 @@ const getById = (id) => menuRepo.getById(id);
 const deleteById = (id) => {
     menuRepo.deleteById(id);
     categoryRepo.deleteByMenuId(id);
+    return true
 }    
 
 const create = (payload) => {
@@ -24,9 +25,9 @@ const updateById = (id, updatedMenu) => {
       return null; 
     }
   
-    Object.assign(existingMenu, updatedMenu);
+    console.log('updated menu id', updatedMenu);
   
-    menuRepo.updateById(id, existingMenu);
+    menuRepo.updateById(id, updatedMenu);
   
     return existingMenu;
 };

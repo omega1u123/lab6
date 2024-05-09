@@ -8,20 +8,19 @@ const create = async (menu) => {
   return menu;
 }
 
-const getById = async (id) => menuData.find((menu) => menu.id === id);
+const getById = async (id) => menuData.find((menu) => menu.id === parseInt(id));
 
 const deleteById = async (id) => {
+  const index = menuData.findIndex((menu) => menu.id === parseInt(id));
   if (index !== -1) {
-    menu.splice(index, 1);
+    menuData.splice(index, 1);
     return true;
   }
-
-  return null;
+  return null; 
 }
   
 const updateById = async (id, updatedMenu) => {
-  const index = menuData.findIndex(menu => menu.id === id);
-
+  const index = menuData.findIndex(menu => menu.id === parseInt(id));
   if (index !== -1) {
     menuData[index] = updatedMenu;
     return true;

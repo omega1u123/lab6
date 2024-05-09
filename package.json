@@ -5,7 +5,7 @@
     "type": "git",
     "url": ""
   },
-  "type": "module",
+  "type": "commonjs",
   "description": "nodejs-mitso",
   "main": "src/server.js",
   "scripts": {
@@ -42,7 +42,8 @@
   "dependencies": {
     "cross-env": "^7.0.3",
     "dotenv": "^9.0.0",
-    "express": "^4.17.1",
+    "express": "^4.19.2",
+    "http-status-codes": "^2.3.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

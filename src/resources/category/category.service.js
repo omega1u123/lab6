@@ -1,4 +1,4 @@
-const categoryRepo =  require('./category.memory.repository.js');
+const categoryRepo =  require('./category.memory.repo.js');
 const dishRepo = require('../dish/dish.memory.repo.js');
 const Category = require('./category.model.js');
 
@@ -6,31 +6,33 @@ const getAll = () => categoryRepo.getAll();
 
 const getById = (id) => categoryRepo.getById(id);
 
-const create = (category) => {
-    const category = new Category(category);
+const create = (payload) => {
+    const category = new Category(payload);
     const categoryCreated = categoryRepo.create(category);
     return categoryCreated;
 };
 
-const update = (id, updatedCategory) => {
+
+const updateById = (id, updatedCategory) => {
     const existingCategory = categoryRepo.getById(id);
   
     if (!existingCategory) {
       return null; 
     }
+
+
+    categoryRepo.updateById(id, updatedCategory);
   
-    Object.assign(existingCategory, updatedCategory);
-  
-    categoryRepo.updateById(id, existingCategory);
-  
-    return existingCategory;
+    return updatedCategory;
 };
+
+
 
 const deleteById = (id) => {
     categoryRepo.deleteById(id);
     dishRepo.deleteByCategoryId(id);
 };
 
-const getDishesByCategoryId = (id) => dishRepo.getDishesByCategoryId(id);
+const getDishesByCategoryId = (id) => dishRepo.getByCategoryId(id);
 
-export { getAll, getById, create, update, deleteById, getDishesByCategoryId };
+module.exports = { getAll, getById, create, updateById, deleteById, getDishesByCategoryId };

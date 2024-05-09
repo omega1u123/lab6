@@ -7,12 +7,12 @@ const create = async (category) => {
   return category;
 }
 
-const getById = async (id) => categoryData.find((category) => category.id === id);
+const getById = async (id) => categoryData.find((category) => category.id === parseInt(id));
 
-const getByMenuId = async (menuId) => categoryData.find((category) => category.menuId === menuId);
+const getByMenuId = async (menuId) => categoryData.find((category) => category.menuId === parseInt(menuId));
 
 const deleteByMenuId = async (menuId) => {
-    const indexToDelete = categoryData.findIndex(category => category.menuId === menuId);
+    const indexToDelete = categoryData.findIndex(category => category.menuId === parseInt(menuId));
   
     if (indexToDelete !== -1) {
       categoryData.splice(indexToDelete, 1);
@@ -23,12 +23,12 @@ const deleteByMenuId = async (menuId) => {
 };
 
 const deleteById = async (id) => {
+  const index = categoryData.findIndex((category) => category.id === parseInt(id));
   if (index !== -1) {
-    category.splice(index, 1);
+    categoryData.splice(index, 1);
     return true;
   }
-
-  return null;
+  return null; 
 }
   
 const updateById = async (id, updatedCategory) => {

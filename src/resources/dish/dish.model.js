@@ -23,4 +23,4 @@ class Dish {
    }
  }
  
- module.export = Dish;
+ module.exports = Dish;
