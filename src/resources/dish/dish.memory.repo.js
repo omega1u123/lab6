@@ -32,7 +32,7 @@ const updateById = async (id, updatedDish) => {
 const getByCategoryId = async (categoryId) => dishData.find((dish) => dish.categoryId === parseInt(categoryId));
 
 const deleteByCategoryId = async (categoryId) => {
-    const indexToDelete = dishData.findIndex(catdishegory => dish.categoryId === parseInt(categoryId));
+    const indexToDelete = dishData.findIndex(dish => dish.categoryId === parseInt(categoryId));
   
     if (indexToDelete !== -1) {
       dishData.splice(indexToDelete, 1);
