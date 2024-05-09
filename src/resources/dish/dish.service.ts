@@ -1,18 +1,17 @@
-const dishRepo = require('./dish.memory.repo.js');
-const Dish = require('./dish.model.js');
+import dishRepo from './dish.memory.repo';
+import Dish from './dish.model';
 
 const getAll = () => dishRepo.getAll();
 
-const getById = (id) => dishRepo.getById(id);
+const getById = (id: number) => dishRepo.getById(id);
 
-const create = (payload) => {
+const create = (payload: Dish) => {
     const dish = new Dish(payload);
     const dishCreated = dishRepo.create(dish);
     return dishCreated;
 };
 
-
-const updateById = (id, updatedDish) => {
+const updateById = (id: number, updatedDish: Dish) => {
     const existingDish = dishRepo.getById(id);
   
     if (!existingDish) {
@@ -24,10 +23,9 @@ const updateById = (id, updatedDish) => {
     return updatedDish;
 };
 
-
-const deleteById = (id) => {
+const deleteById = (id: number): boolean => {
     dishRepo.deleteById(id);
+    return true;
 };
 
-
-module.exports =  { getAll, getById, create, updateById, deleteById };
+export default { getAll, getById, create, updateById, deleteById };

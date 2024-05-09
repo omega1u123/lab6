@@ -1,24 +1,24 @@
-const menuRepo =  require('./menu.memory.repo.js');
-const categoryRepo =  require('../category/category.memory.repo.js');
-const Menu = require('../menu/menu.model.js')
+const menuRepo =  require('./menu.memory.repo');
+const categoryRepo = require('../category/category.memory.repo');
+import Menu from './menu.model';
 
 const getAll = () => menuRepo.getAll();
 
-const getById = (id) => menuRepo.getById(id);
+const getById = (id: number) => menuRepo.getById(id);
 
-const deleteById = (id) => {
+const deleteById = (id: number) => {
     menuRepo.deleteById(id);
     categoryRepo.deleteByMenuId(id);
-    return true
+    return true;
 }    
 
-const create = (payload) => {
+const create = (payload: Menu) => {
     const menu = new Menu(payload);
     const menuCreated = menuRepo.create(menu);
     return menuCreated;
 }
 
-const updateById = (id, updatedMenu) => {
+const updateById = (id: number, updatedMenu: Menu) => {
     const existingMenu = menuRepo.getById(id);
   
     if (!existingMenu) {
@@ -33,8 +33,8 @@ const updateById = (id, updatedMenu) => {
 };
 
 
-const getCategories = (menuId) =>{
+const getCategories = (menuId: number) => {
     return categoryRepo.getByMenuId(menuId);
 }
 
-module.exports =  { getAll, getById, deleteById, create, updateById, getCategories };
+export { getAll, getById, deleteById, create, updateById, getCategories };
