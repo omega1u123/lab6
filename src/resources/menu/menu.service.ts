@@ -37,4 +37,4 @@ const getCategories = (menuId: number) => {
     return categoryRepo.getByMenuId(menuId);
 }
 
-export { getAll, getById, deleteById, create, updateById, getCategories };
+export default{ getAll, getById, deleteById, create, updateById, getCategories };

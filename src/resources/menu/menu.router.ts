@@ -2,12 +2,12 @@ import { Router, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import Menu from './menu.model';
 import Category from '../category/category.model';
-const menuService = require('./menu.service');
+import menuService from './menu.service';
 
 const router = Router();
 
 router.route('/')
-  .get(async (req: Request, res: Response) => {
+  .get(async (_req: Request, res: Response) => {
     const menu = await menuService.getAll();
     res.json(menu.map((menu: Menu) => Menu.toResponse(menu)));
   })
@@ -25,7 +25,7 @@ router.route('/')
 
 router.route('/:menuId')
   .get(async (req: Request, res: Response) => {
-    const { menuId } = req.params;
+    const menuId = req.params['menuId'] as string;
     console.log(menuId)
     const menu = await menuService.getById(parseInt(menuId));
     if (menu) {
@@ -35,7 +35,7 @@ router.route('/:menuId')
     }
   })
   .put(async (req: Request, res: Response) => {
-    const { menuId } = req.params;
+    const menuId = req.params['menuId'] as string;
     const { title, photo, isPublish } = req.body;
     const id = parseInt(menuId);
     console.log({ title, photo, isPublish })
@@ -47,7 +47,7 @@ router.route('/:menuId')
     }
   })
   .delete(async (req: Request, res: Response) => {
-    const { menuId } = req.params;
+    const menuId = req.params['menuId'] as string;
     const menuDeleted = await menuService.deleteById(parseInt(menuId));
     if (menuDeleted) {
       res.json(StatusCodes.OK);
@@ -58,7 +58,7 @@ router.route('/:menuId')
 
 router.route('/:menuId/categories')
   .get(async (req: Request, res: Response) => {
-    const { menuId } = req.params;
+    const menuId = req.params['menuId'] as string;
     const categories = await menuService.getCategories(parseInt(menuId));
     if (categories) {
       res.json(categories.map((category: Category) => Category.toResponse(category)));

@@ -1,5 +1,5 @@
-const categoryRepo =  require('./category.memory.repo');
-const dishRepo =  require('../dish/dish.memory.repo');
+const categoryRepo = require('./category.memory.repo');
+import dishRepo from '../dish/dish.memory.repo';
 import Category from './category.model';
 
 const getAll = () => categoryRepo.getAll();
@@ -27,8 +27,9 @@ const updateById = (id: number, updatedCategory: any) => {
 const deleteById = (id: number) => {
     categoryRepo.deleteById(id);
     dishRepo.deleteByCategoryId(id);
+    return true;
 };
 
 const getDishesByCategoryId = (id: number) => dishRepo.getByCategoryId(id);
 
-export { getAll, getById, create, updateById, deleteById, getDishesByCategoryId };
+export default { getAll, getById, create, updateById, deleteById, getDishesByCategoryId };

@@ -1,16 +1,16 @@
 import categoryData from '../../data/category.data';
 import Category from './category.model';
 
-const getAll = async () => categoryData;
+const getAll = async (): Promise<Category[]> => categoryData;
   
 const create = async (category: any) => {
   categoryData.push(category);
   return category;
 }
 
-const getById = async (id: number) => categoryData.find((category: Category) => category.id === id);
+const getById = async (id: number): Promise<Category | undefined> => categoryData.find((category) => category.id === id);
 
-const getByMenuId = async (menuId: number) => categoryData.find((category: Category) => category.menuId === menuId);
+const getByMenuId = async (menuId: number): Promise<Category[] | undefined>  => categoryData.filter((category: Category) => category.menuId === menuId);
 
 const deleteByMenuId = async (menuId: number) => {
     const indexToDelete = categoryData.findIndex((category: Category) => category.menuId === menuId);

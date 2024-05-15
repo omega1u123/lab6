@@ -5,7 +5,7 @@ import dishService from './dish.service';
 
 const router = Router();
 
-router.route('/').get(async (req: Request, res: Response) => {
+router.route('/').get(async (_req: Request, res: Response) => {
   const dish = await dishService.getAll();
   res.json(dish.map(Dish.toResponse));
 });
@@ -26,7 +26,7 @@ router.route('/').post(async (req: Request, res: Response) => {
 });
 
 router.route('/:dishId').get(async (req: Request, res: Response) => {
-  const { dishId } = req.params;
+  const dishId = req.params['dishId'] as string;
   console.log(dishId)
   const dish = await dishService.getById(parseInt(dishId));
   if (dish) {
@@ -38,7 +38,7 @@ router.route('/:dishId').get(async (req: Request, res: Response) => {
 
 
 router.route('/:dishId').put(async (req: Request, res: Response) => {
-  const { dishId } = req.params;
+  const dishId = req.params['dishId'] as string;
   const { title, photo, isPublish, ingredients, price, categoryId } = req.body;
   const id: number = parseInt(dishId);
   console.log({ title, photo, isPublish })
@@ -51,7 +51,7 @@ router.route('/:dishId').put(async (req: Request, res: Response) => {
 });
 
 router.route('/:dishId').delete(async (req: Request, res: Response) => {
-  const { dishId } = req.params;
+  const dishId = req.params['dishId'] as string;
   const dish: boolean = dishService.deleteById(parseInt(dishId));
   if (dish) {
     res.json(StatusCodes.OK);

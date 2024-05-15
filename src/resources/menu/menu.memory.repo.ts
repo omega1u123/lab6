@@ -1,5 +1,5 @@
 import Menu from './menu.model';
-const menuData: Menu[] = require('../../data/menu.data');
+import menuData from '../../data/menu.data';
 
 const getAll = async (): Promise<Menu[]> => menuData;
   

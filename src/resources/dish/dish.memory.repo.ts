@@ -1,4 +1,5 @@
 import dishData from '../../data/dish.data';
+import Dish from './dish.model';
 
 const getAll = async () => dishData;
   
@@ -8,7 +9,7 @@ const create = async (dish: any) => {
   return dish;
 }
 
-const getById = async (id: number) => dishData.find((dish: any) => dish.id === id);
+const getById = async (id: number): Promise<Dish | undefined> => dishData.find((dish) => dish.id === id);
 
 const deleteById = async (id: number) => {
   const index = dishData.findIndex((dish: any) => dish.id === id);
@@ -29,7 +30,8 @@ const updateById = async (id: number, updatedDish: any) => {
   return false; 
 };
 
-const getByCategoryId = async (categoryId: number) => dishData.find((dish: any) => dish.categoryId === categoryId);
+const getByCategoryId = async (categoryId: number): Promise<Dish[] | undefined> => dishData.filter((dish: any) => dish.categoryId === categoryId);
+
 
 const deleteByCategoryId = async (categoryId: number) => {
   const indexToDelete = dishData.findIndex((dish: any) => dish.categoryId === categoryId);
