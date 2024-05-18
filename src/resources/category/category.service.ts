@@ -6,13 +6,13 @@ const getAll = () => categoryRepo.getAll();
 
 const getById = (id: number) => categoryRepo.getById(id);
 
-const create = (payload: any) => {
+const create = (payload: Category) => {
     const category = new Category(payload);
     const categoryCreated = categoryRepo.create(category);
     return categoryCreated;
 };
 
-const updateById = (id: number, updatedCategory: any) => {
+const updateById = (id: number, updatedCategory: Category) => {
     const existingCategory = categoryRepo.getById(id);
   
     if (!existingCategory) {

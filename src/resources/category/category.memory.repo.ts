@@ -3,7 +3,7 @@ import Category from './category.model';
 
 const getAll = async (): Promise<Category[]> => categoryData;
   
-const create = async (category: any) => {
+const create = async (category: Category) => {
   categoryData.push(category);
   return category;
 }
@@ -29,7 +29,7 @@ const deleteById = async (id: number) => {
     categoryData.splice(index, 1);
     return true;
   }
-  return null; 
+  return false; 
 }
   
 const updateById = async (id: number, updatedCategory: Category) => {

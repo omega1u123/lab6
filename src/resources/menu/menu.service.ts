@@ -33,8 +33,6 @@ const updateById = (id: number, updatedMenu: Menu) => {
 };
 
 
-const getCategories = (menuId: number) => {
-    return categoryRepo.getByMenuId(menuId);
-}
+const getCategories = (menuId: number) => categoryRepo.getByMenuId(menuId)
 
 export default{ getAll, getById, deleteById, create, updateById, getCategories };

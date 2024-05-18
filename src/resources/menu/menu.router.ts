@@ -25,7 +25,7 @@ router.route('/')
 
 router.route('/:menuId')
   .get(async (req: Request, res: Response) => {
-    const menuId = req.params['menuId'] as string;
+    const { menuId }= req.params as {menuId: string};
    
     const menu = await menuService.getById(parseInt(menuId, 10));
     if (menu) {
@@ -35,7 +35,7 @@ router.route('/:menuId')
     }
   })
   .put(async (req: Request, res: Response) => {
-    const menuId = req.params['menuId'] as string;
+    const { menuId }= req.params as {menuId: string};
     const { title, photo, isPublish } = req.body;
     const id = parseInt(menuId, 10);
 
@@ -47,7 +47,7 @@ router.route('/:menuId')
     }
   })
   .delete(async (req: Request, res: Response) => {
-    const menuId = req.params['menuId'] as string;
+    const { menuId }= req.params as {menuId: string};
     const menuDeleted = await menuService.deleteById(parseInt(menuId, 10));
     if (menuDeleted) {
       res.json(StatusCodes.OK);
@@ -58,7 +58,7 @@ router.route('/:menuId')
 
 router.route('/:menuId/categories')
   .get(async (req: Request, res: Response) => {
-    const menuId = req.params['menuId'] as string;
+    const { menuId }= req.params as {menuId: string};
     const categories = await menuService.getCategories(parseInt(menuId, 10));
     if (categories) {
       res.json(categories.map((category: Category) => Category.toResponse(category)));

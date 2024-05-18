@@ -1,7 +1,7 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
-import menuRouter from './resources/menu/menu.router';
-import categoryRouter from './resources/category/category.router';
-import dishRouter from './resources/dish/dish.router';
+import menuRouter from "./resources/menu/menu.router"; 
+import categoryRouter from "./resources/category/category.router"; 
+import dishRouter from "./resources/dish/dish.router";
 
 const app: Express = express();
 

@@ -1,7 +1,10 @@
 class Menu {
   id: number;
+
   title: string;
+
   photo: string;
+
   isPublish: boolean;
 
   constructor({

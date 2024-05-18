@@ -1,8 +1,12 @@
 class Category {
   id: number;
+
   title: string;
+
   photo: string;
+
   isVisible: boolean;
+
   menuId: number;
 
   constructor({
@@ -25,7 +29,7 @@ class Category {
     this.menuId = menuId || 0;
   }
 
-  static toResponse(category: Category): any {
+  static toResponse(category: Category): Category {
     const { id, title, photo, isVisible, menuId } = category;
     return { id, title, photo, isVisible, menuId };
   }

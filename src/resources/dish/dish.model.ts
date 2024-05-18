@@ -1,10 +1,16 @@
 class Dish {
   id: number;
+
   title: string;
+
   photo: string;
+
   isPublish: boolean;
+
   ingredients: string[];
+
   price: number;
+
   categoryId: number;
 
   constructor({
@@ -33,7 +39,7 @@ class Dish {
     this.categoryId = categoryId || 0;
   }
 
-  static toResponse(dish: Dish): any {
+  static toResponse(dish: Dish): Dish {
     const { id, title, photo, isPublish, ingredients, price, categoryId } = dish;
     return { id, title, photo, isPublish, ingredients, price, categoryId };
   }

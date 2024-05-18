@@ -3,7 +3,7 @@ import Dish from './dish.model';
 
 const getAll = async () => dishData;
   
-const create = async (dish: any) => {
+const create = async (dish: Dish) => {
   dishData.push(dish);
   return dish;
 }
@@ -11,7 +11,7 @@ const create = async (dish: any) => {
 const getById = async (id: number): Promise<Dish | undefined> => dishData.find((dish) => dish.id === id);
 
 const deleteById = async (id: number) => {
-  const index = dishData.findIndex((dish: any) => dish.id === id);
+  const index = dishData.findIndex((dish: Dish) => dish.id === id);
   if (index !== -1) {
     dishData.splice(index, 1);
     return true;
@@ -20,7 +20,7 @@ const deleteById = async (id: number) => {
 }
   
 const updateById = async (id: number, updatedDish: Dish) => {
-  const index = dishData.findIndex((dish: any) => dish.id === id);
+  const index = dishData.findIndex((dish: Dish) => dish.id === id);
   if (index !== -1) {
     dishData[index] = updatedDish;
     return true;
@@ -29,11 +29,11 @@ const updateById = async (id: number, updatedDish: Dish) => {
   return false; 
 };
 
-const getByCategoryId = async (categoryId: number): Promise<Dish[] | undefined> => dishData.filter((dish: any) => dish.categoryId === categoryId);
+const getByCategoryId = async (categoryId: number): Promise<Dish[] | undefined> => dishData.filter((dish: Dish) => dish.categoryId === categoryId);
 
 
 const deleteByCategoryId = async (categoryId: number) => {
-  const indexToDelete = dishData.findIndex((dish: any) => dish.categoryId === categoryId);
+  const indexToDelete = dishData.findIndex((dish: Dish) => dish.categoryId === categoryId);
   
   if (indexToDelete !== -1) {
     dishData.splice(indexToDelete, 1);
