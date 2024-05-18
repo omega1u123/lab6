@@ -5,7 +5,6 @@ const getAll = async () => dishData;
   
 const create = async (dish: any) => {
   dishData.push(dish);
-  console.log(dishData)
   return dish;
 }
 
@@ -20,7 +19,7 @@ const deleteById = async (id: number) => {
   return null; 
 }
   
-const updateById = async (id: number, updatedDish: any) => {
+const updateById = async (id: number, updatedDish: Dish) => {
   const index = dishData.findIndex((dish: any) => dish.id === id);
   if (index !== -1) {
     dishData[index] = updatedDish;

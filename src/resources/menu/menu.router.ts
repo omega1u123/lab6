@@ -9,7 +9,7 @@ const router = Router();
 router.route('/')
   .get(async (_req: Request, res: Response) => {
     const menu = await menuService.getAll();
-    res.json(menu.map((menu: Menu) => Menu.toResponse(menu)));
+    res.json(menu.map((menuItem: Menu) => Menu.toResponse(menuItem)));
   })
   .post(async (req: Request, res: Response) => {
     const { id, title, photo, isPublish } = req.body;
@@ -26,8 +26,8 @@ router.route('/')
 router.route('/:menuId')
   .get(async (req: Request, res: Response) => {
     const menuId = req.params['menuId'] as string;
-    console.log(menuId)
-    const menu = await menuService.getById(parseInt(menuId));
+   
+    const menu = await menuService.getById(parseInt(menuId, 10));
     if (menu) {
       res.json(Menu.toResponse(menu));
     } else {
@@ -37,8 +37,8 @@ router.route('/:menuId')
   .put(async (req: Request, res: Response) => {
     const menuId = req.params['menuId'] as string;
     const { title, photo, isPublish } = req.body;
-    const id = parseInt(menuId);
-    console.log({ title, photo, isPublish })
+    const id = parseInt(menuId, 10);
+
     const updatedMenu = await menuService.updateById(id, { id, title, photo, isPublish });
     if (updatedMenu) {
       res.json(Menu.toResponse(updatedMenu));
@@ -48,7 +48,7 @@ router.route('/:menuId')
   })
   .delete(async (req: Request, res: Response) => {
     const menuId = req.params['menuId'] as string;
-    const menuDeleted = await menuService.deleteById(parseInt(menuId));
+    const menuDeleted = await menuService.deleteById(parseInt(menuId, 10));
     if (menuDeleted) {
       res.json(StatusCodes.OK);
     } else {
@@ -59,7 +59,7 @@ router.route('/:menuId')
 router.route('/:menuId/categories')
   .get(async (req: Request, res: Response) => {
     const menuId = req.params['menuId'] as string;
-    const categories = await menuService.getCategories(parseInt(menuId));
+    const categories = await menuService.getCategories(parseInt(menuId, 10));
     if (categories) {
       res.json(categories.map((category: Category) => Category.toResponse(category)));
     } else {

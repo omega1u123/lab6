@@ -27,8 +27,7 @@ router.route('/')
 router.route('/:categoryId')
   .get(async (req: Request, res: Response) => {
     const categoryId = req.params['categoryId'] as string;
-    console.log("category id: " + categoryId)
-    const category = await categoryService.getById(parseInt(categoryId));
+    const category = await categoryService.getById(parseInt(categoryId, 10));
     if (category) {
       res.json(Category.toResponse(category));
     } else {
@@ -39,9 +38,7 @@ router.route('/:categoryId')
     const categoryId = req.params['categoryId'] as string;
     const { title, photo, isVisible, menuId } = req.body;
     const id = categoryId;
-    console.log(isVisible);
-    console.log({ title, photo, isVisible })
-    const updatedCategory = await categoryService.updateById(parseInt(categoryId), { id, title, photo, isVisible, menuId });
+    const updatedCategory = await categoryService.updateById(parseInt(categoryId, 10), { id, title, photo, isVisible, menuId });
     if (updatedCategory) {
       res.json(Category.toResponse(updatedCategory));
     } else {
@@ -50,7 +47,7 @@ router.route('/:categoryId')
   })
   .delete(async (req: Request, res: Response) => {
     const categoryId = req.params['categoryId'] as string;
-    const categoryDeleted = await categoryService.deleteById(parseInt(categoryId));
+    const categoryDeleted = await categoryService.deleteById(parseInt(categoryId, 10));
     if (categoryDeleted) {
       res.json(StatusCodes.OK);
     } else {
@@ -61,7 +58,7 @@ router.route('/:categoryId')
 router.route('/:categoryId/dishes')
   .get(async (req: Request, res: Response) => {
     const categoryId = req.params['categoryId'] as string;
-    const dishes = await categoryService.getDishesByCategoryId(parseInt(categoryId));
+    const dishes = await categoryService.getDishesByCategoryId(parseInt(categoryId, 10));
     if (dishes) {
       res.json(dishes.map((dish) => Dish.toResponse(dish)));
     } else {

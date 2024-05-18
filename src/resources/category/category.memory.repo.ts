@@ -43,4 +43,4 @@ const updateById = async (id: number, updatedCategory: Category) => {
   return false; 
 };
 
-export { getAll, getById, deleteById, create, updateById, getByMenuId, deleteByMenuId };
+export default{ getAll, getById, deleteById, create, updateById, getByMenuId, deleteByMenuId };

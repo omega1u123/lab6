@@ -21,4 +21,4 @@ app.use('/menu', menuRouter);
 app.use('/category', categoryRouter);
 app.use('/dish', dishRouter);
 
-module.exports =  app;
+export default app;

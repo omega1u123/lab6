@@ -1,5 +1,5 @@
-const menuRepo =  require('./menu.memory.repo');
-const categoryRepo = require('../category/category.memory.repo');
+import menuRepo from './menu.memory.repo';
+import categoryRepo from '../category/category.memory.repo';
 import Menu from './menu.model';
 
 const getAll = () => menuRepo.getAll();
@@ -25,7 +25,7 @@ const updateById = (id: number, updatedMenu: Menu) => {
       return null; 
     }
   
-    console.log('updated menu id', updatedMenu);
+
   
     menuRepo.updateById(id, updatedMenu);
   

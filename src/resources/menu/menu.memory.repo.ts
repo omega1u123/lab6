@@ -5,7 +5,7 @@ const getAll = async (): Promise<Menu[]> => menuData;
   
 const create = async (menu: Menu): Promise<Menu> => {
   menuData.push(menu);
-  console.log(menuData);
+
   return menu;
 }
 
@@ -29,4 +29,4 @@ const updateById = async (id: number, updatedMenu: Menu): Promise<boolean> => {
   return false; 
 };
 
-export { getAll, getById, deleteById, create, updateById };
+export default{ getAll, getById, deleteById, create, updateById };

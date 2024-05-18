@@ -1,4 +1,4 @@
-const categoryRepo = require('./category.memory.repo');
+import categoryRepo from './category.memory.repo';
 import dishRepo from '../dish/dish.memory.repo';
 import Category from './category.model';
 

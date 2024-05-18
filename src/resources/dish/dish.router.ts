@@ -27,8 +27,8 @@ router.route('/').post(async (req: Request, res: Response) => {
 
 router.route('/:dishId').get(async (req: Request, res: Response) => {
   const dishId = req.params['dishId'] as string;
-  console.log(dishId)
-  const dish = await dishService.getById(parseInt(dishId));
+
+  const dish = await dishService.getById(parseInt(dishId, 10));
   if (dish) {
     res.json(Dish.toResponse(dish));
   } else {
@@ -40,9 +40,9 @@ router.route('/:dishId').get(async (req: Request, res: Response) => {
 router.route('/:dishId').put(async (req: Request, res: Response) => {
   const dishId = req.params['dishId'] as string;
   const { title, photo, isPublish, ingredients, price, categoryId } = req.body;
-  const id: number = parseInt(dishId);
-  console.log({ title, photo, isPublish })
-  const dish = dishService.updateById(parseInt(dishId), { id, title, photo, isPublish, ingredients, price, categoryId })
+  const id: number = parseInt(dishId, 10);
+ 
+  const dish = dishService.updateById(parseInt(dishId, 10), { id, title, photo, isPublish, ingredients, price, categoryId })
   if (dish) {
     res.json(Dish.toResponse(dish));
   } else {
@@ -52,7 +52,7 @@ router.route('/:dishId').put(async (req: Request, res: Response) => {
 
 router.route('/:dishId').delete(async (req: Request, res: Response) => {
   const dishId = req.params['dishId'] as string;
-  const dish: boolean = dishService.deleteById(parseInt(dishId));
+  const dish: boolean = dishService.deleteById(parseInt(dishId, 10));
   if (dish) {
     res.json(StatusCodes.OK);
   } else {
