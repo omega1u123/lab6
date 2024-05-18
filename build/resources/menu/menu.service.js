@@ -1,11 +1,6 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const menuRepo = require('./menu.memory.repo');
-const categoryRepo = require('../category/category.memory.repo');
-const menu_model_1 = __importDefault(require("./menu.model"));
+import menuRepo from './menu.memory.repo';
+import categoryRepo from '../category/category.memory.repo';
+import Menu from './menu.model';
 const getAll = () => menuRepo.getAll();
 const getById = (id) => menuRepo.getById(id);
 const deleteById = (id) => {
@@ -14,7 +9,7 @@ const deleteById = (id) => {
     return true;
 };
 const create = (payload) => {
-    const menu = new menu_model_1.default(payload);
+    const menu = new Menu(payload);
     const menuCreated = menuRepo.create(menu);
     return menuCreated;
 };
@@ -23,12 +18,9 @@ const updateById = (id, updatedMenu) => {
     if (!existingMenu) {
         return null;
     }
-    console.log('updated menu id', updatedMenu);
     menuRepo.updateById(id, updatedMenu);
     return existingMenu;
 };
-const getCategories = (menuId) => {
-    return categoryRepo.getByMenuId(menuId);
-};
-exports.default = { getAll, getById, deleteById, create, updateById, getCategories };
+const getCategories = (menuId) => categoryRepo.getByMenuId(menuId);
+export default { getAll, getById, deleteById, create, updateById, getCategories };
 //# sourceMappingURL=menu.service.js.map

@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class Menu {
     id;
     title;
@@ -16,5 +14,5 @@ class Menu {
         return { id, title, photo, isPublish };
     }
 }
-exports.default = Menu;
+export default Menu;
 //# sourceMappingURL=menu.model.js.map

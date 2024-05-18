@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class Dish {
     id;
     title;
@@ -22,5 +20,5 @@ class Dish {
         return { id, title, photo, isPublish, ingredients, price, categoryId };
     }
 }
-exports.default = Dish;
+export default Dish;
 //# sourceMappingURL=dish.model.js.map

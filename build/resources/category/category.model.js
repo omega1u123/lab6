@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class Category {
     id;
     title;
@@ -18,5 +16,5 @@ class Category {
         return { id, title, photo, isVisible, menuId };
     }
 }
-exports.default = Category;
+export default Category;
 //# sourceMappingURL=category.model.js.map

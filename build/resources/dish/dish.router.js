@@ -1,62 +1,55 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
-const http_status_codes_1 = require("http-status-codes");
-const dish_model_1 = __importDefault(require("./dish.model"));
-const dish_service_1 = __importDefault(require("./dish.service"));
-const router = (0, express_1.Router)();
+import { Router } from 'express';
+import { StatusCodes } from 'http-status-codes';
+import Dish from './dish.model';
+import dishService from './dish.service';
+const router = Router();
 router.route('/').get(async (_req, res) => {
-    const dish = await dish_service_1.default.getAll();
-    res.json(dish.map(dish_model_1.default.toResponse));
+    const dish = await dishService.getAll();
+    res.json(dish.map(Dish.toResponse));
 });
 router.route('/').post(async (req, res) => {
     const { id, title, photo, isPublish, ingredients, price, categoryId } = req.body;
-    const dish = await dish_service_1.default.create({ id, title, photo, isPublish, ingredients, price, categoryId });
+    const dish = await dishService.create({ id, title, photo, isPublish, ingredients, price, categoryId });
     if (dish) {
-        res.status(http_status_codes_1.StatusCodes.CREATED).json(dish_model_1.default.toResponse(dish));
+        res.status(StatusCodes.CREATED).json(Dish.toResponse(dish));
     }
     else {
         res
-            .status(http_status_codes_1.StatusCodes.BAD_REQUEST)
+            .status(StatusCodes.BAD_REQUEST)
             .json({ code: 'BAD_REQUEST', msg: 'Bad request' });
     }
 });
 router.route('/:dishId').get(async (req, res) => {
-    const dishId = req.params['dishId'];
-    console.log(dishId);
-    const dish = await dish_service_1.default.getById(parseInt(dishId));
+    const { dishId } = req.params;
+    const dish = await dishService.getById(parseInt(dishId, 10));
     if (dish) {
-        res.json(dish_model_1.default.toResponse(dish));
+        res.json(Dish.toResponse(dish));
     }
     else {
-        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json({ code: 'NOT_FOUND', msg: 'dish not found' });
+        res.status(StatusCodes.NOT_FOUND).json({ code: 'NOT_FOUND', msg: 'dish not found' });
     }
 });
 router.route('/:dishId').put(async (req, res) => {
-    const dishId = req.params['dishId'];
+    const { dishId } = req.params;
     const { title, photo, isPublish, ingredients, price, categoryId } = req.body;
-    const id = parseInt(dishId);
-    console.log({ title, photo, isPublish });
-    const dish = dish_service_1.default.updateById(parseInt(dishId), { id, title, photo, isPublish, ingredients, price, categoryId });
+    const id = parseInt(dishId, 10);
+    const dish = dishService.updateById(parseInt(dishId, 10), { id, title, photo, isPublish, ingredients, price, categoryId });
     if (dish) {
-        res.json(dish_model_1.default.toResponse(dish));
+        res.json(Dish.toResponse(dish));
     }
     else {
-        res.status(http_status_codes_1.StatusCodes.BAD_REQUEST).json({ code: 'BAD_REQUEST', msg: 'Bad request' });
+        res.status(StatusCodes.BAD_REQUEST).json({ code: 'BAD_REQUEST', msg: 'Bad request' });
     }
 });
 router.route('/:dishId').delete(async (req, res) => {
-    const dishId = req.params['dishId'];
-    const dish = dish_service_1.default.deleteById(parseInt(dishId));
+    const { dishId } = req.params;
+    const dish = dishService.deleteById(parseInt(dishId, 10));
     if (dish) {
-        res.json(http_status_codes_1.StatusCodes.OK);
+        res.json(StatusCodes.OK);
     }
     else {
-        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json({ code: 'NOT_FOUND', msg: 'dish not found' });
+        res.status(StatusCodes.NOT_FOUND).json({ code: 'NOT_FOUND', msg: 'dish not found' });
     }
 });
-exports.default = router;
+export default router;
 //# sourceMappingURL=dish.router.js.map
