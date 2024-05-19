@@ -9,21 +9,23 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: database
+    networks:
+      - app-network
 
   express-app:
     build: .
     ports:
-      - "3000:3000"
+      - "4000:4000"
     volumes:
       - .:/app
     depends_on:
       - postgres
-
+    networks:
+      - app-network
 
 volumes:
   db_data:
 
 networks:
-  default:
-    external:
-      name: my_network
+  app-network:
+    driver: bridge
