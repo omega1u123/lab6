@@ -1,5 +1,5 @@
-import dishRepo from './dish.memory.repo';
-import Dish from './dish.model';
+import dishRepo from './dish.memory.repo.js';
+import Dish from './dish.model.js';
 const getAll = () => dishRepo.getAll();
 const getById = (id) => dishRepo.getById(id);
 const create = (payload) => {

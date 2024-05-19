@@ -1,4 +1,4 @@
-import menuData from '../../data/menu.data';
+import menuData from '../../data/menu.data.js';
 const getAll = async () => menuData;
 const create = async (menu) => {
     menuData.push(menu);

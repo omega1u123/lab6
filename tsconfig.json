@@ -24,8 +24,8 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "removeComments": true, // Добавьте эту опцию
-    "declaration": false // Эта опция тоже может быть полезна
+    "removeComments": true,
+    "declaration": false
   },
   "exclude": ["node_modules"],
   "include": ["/home/ilya/Projects/nodejs-labs/lab6/basic-nodejs-mitso/src/**/*.ts"]

@@ -1,4 +1,4 @@
-import categoryData from '../../data/category.data';
+import categoryData from '../../data/category.data.js';
 const getAll = async () => categoryData;
 const create = async (category) => {
     categoryData.push(category);

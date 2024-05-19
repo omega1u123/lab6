@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import Dish from '../dish/dish.model';
-import Category from './category.model';
-import categoryService from './category.service';
+import Dish from '../dish/dish.model.js';
+import Category from './category.model.js';
+import categoryService from './category.service.js';
 const router = Router();
 router.route('/')
     .get(async (_req, res) => {

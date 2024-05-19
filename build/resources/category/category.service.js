@@ -1,6 +1,6 @@
-import categoryRepo from './category.memory.repo';
-import dishRepo from '../dish/dish.memory.repo';
-import Category from './category.model';
+import categoryRepo from './category.memory.repo.js';
+import dishRepo from '../dish/dish.memory.repo.js';
+import Category from './category.model.js';
 const getAll = () => categoryRepo.getAll();
 const getById = (id) => categoryRepo.getById(id);
 const create = (payload) => {

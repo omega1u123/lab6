@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import Dish from './dish.model';
-import dishService from './dish.service';
+import Dish from './dish.model.js';
+import dishService from './dish.service.js';
 const router = Router();
 router.route('/').get(async (_req, res) => {
     const dish = await dishService.getAll();

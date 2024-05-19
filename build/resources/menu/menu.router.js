@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import Menu from './menu.model';
-import Category from '../category/category.model';
-import menuService from './menu.service';
+import Menu from './menu.model.js';
+import Category from '../category/category.model.js';
+import menuService from './menu.service.js';
 const router = Router();
 router.route('/')
     .get(async (_req, res) => {

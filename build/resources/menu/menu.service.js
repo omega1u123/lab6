@@ -1,6 +1,6 @@
-import menuRepo from './menu.memory.repo';
-import categoryRepo from '../category/category.memory.repo';
-import Menu from './menu.model';
+import menuRepo from './menu.memory.repo.js';
+import categoryRepo from '../category/category.memory.repo.js';
+import Menu from './menu.model.js';
 const getAll = () => menuRepo.getAll();
 const getById = (id) => menuRepo.getById(id);
 const deleteById = (id) => {

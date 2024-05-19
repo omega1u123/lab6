@@ -1,4 +1,4 @@
-import dishData from '../../data/dish.data';
+import dishData from '../../data/dish.data.js';
 const getAll = async () => dishData;
 const create = async (dish) => {
     dishData.push(dish);
